@@ -1,39 +1,37 @@
-function onOpen() {
-  const ui = SpreadsheetApp.getUi()
-  const menu = ui.createMenu("🌌 ESN Menu")
-  menu.addItem("Create New Meeting","newMeeting").addToUi()
-}
-
 const ActiveSheet = SpreadsheetApp.getActiveSpreadsheet()
 
 const AGENDA_TEMPLATE_SHEET = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('#No | Date')
-const NOTES_TEMPLATE_DOC = AGENDA_TEMPLATE_SHEET.getRange('L9').getValue()
+const NOTES_TEMPLATE_DOC = AGENDA_TEMPLATE_SHEET.getRange('N8').getValue()
 const NOTES_TEMPLATE_DOC_ID = DriveApp.getFileById(NOTES_TEMPLATE_DOC)
 
-const MEETIING_NAME = ActiveSheet.getName().split(" |",1) //AGENDA_TEMPLATE_SHEET.getRange('L12').getValue()
+const MEETIING_NAME = ActiveSheet.getName().split(" |",1)
 
-const START_TIME = AGENDA_TEMPLATE_SHEET.getRange('L19').getValue()
+const START_TIME = AGENDA_TEMPLATE_SHEET.getRange('N12').getValue()
   const START_TIME_HOURS = START_TIME.split(":",1)
   const START_TIME_MINUTES = START_TIME.split(":",2).slice(1,2)
 
-const END_TIME = AGENDA_TEMPLATE_SHEET.getRange('L21').getValue()
+const END_TIME = AGENDA_TEMPLATE_SHEET.getRange('N13').getValue()
   const END_TIME_HOURS = END_TIME.split(":",1)
   const END_TIME_MINUTES = END_TIME.split(":",2).slice(1,2)
 
 const DATE_FORMAT = "dd/MM/yy"
-const DAY_OF_THE_WEEK = String(AGENDA_TEMPLATE_SHEET.getRange('L15').getValue())
-const CALENDAR_ID = String(AGENDA_TEMPLATE_SHEET.getRange('L17').getValue())
+const DAY_OF_THE_WEEK = String(AGENDA_TEMPLATE_SHEET.getRange('N10').getValue())
+const CALENDAR_ID = String(AGENDA_TEMPLATE_SHEET.getRange('N9').getValue())
 
-const EVENT_DESCRIPTION = AGENDA_TEMPLATE_SHEET.getRange('L6').getValue()
-const EVENT_LOCATION = "Google Meet"
-const EVENT_GUESTS = [
+const EVENT_DESCRIPTION = AGENDA_TEMPLATE_SHEET.getRange('N6').getValue()
+//const EVENT_LOCATION = "Google Meet"
+const EVENT_GUESTS = SpreadsheetApp.getActiveSheet().getRange("N15:N30").getValues().join().split(',').filter(Boolean)
+
+  /*[
   AGENDA_TEMPLATE_SHEET.getRange('L24').getValue(),
   AGENDA_TEMPLATE_SHEET.getRange('L25').getValue(),
   AGENDA_TEMPLATE_SHEET.getRange('L26').getValue(),
   AGENDA_TEMPLATE_SHEET.getRange('L27').getValue(),
-  AGENDA_TEMPLATE_SHEET.getRange('L28').getValue()].filter(n => n)          
+  AGENDA_TEMPLATE_SHEET.getRange('L28').getValue()].filter(n => n)
+  */   
  
-  const SLACK_CHANNEL_EMAIL = "wpa+slack@esngreece.gr"
+  //const SLACK_CHANNEL_EMAIL = ""
+
 
 function newMeeting(){
   var timeZone = Session.getTimeZone()
