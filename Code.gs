@@ -21,14 +21,7 @@ const CALENDAR_ID = String(AGENDA_TEMPLATE_SHEET.getRange('N9').getValue())
 const EVENT_DESCRIPTION = AGENDA_TEMPLATE_SHEET.getRange('N6').getValue()
 //const EVENT_LOCATION = "Google Meet"
 const EVENT_GUESTS = SpreadsheetApp.getActiveSheet().getRange("N15:N30").getValues().join().split(',').filter(Boolean)
-
-  /*[
-  AGENDA_TEMPLATE_SHEET.getRange('L24').getValue(),
-  AGENDA_TEMPLATE_SHEET.getRange('L25').getValue(),
-  AGENDA_TEMPLATE_SHEET.getRange('L26').getValue(),
-  AGENDA_TEMPLATE_SHEET.getRange('L27').getValue(),
-  AGENDA_TEMPLATE_SHEET.getRange('L28').getValue()].filter(n => n)
-  */   
+ 
  
   //const SLACK_CHANNEL_EMAIL = ""
 

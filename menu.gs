@@ -10,13 +10,8 @@ function initMenu()
   var ui = SpreadsheetApp.getUi()
   var menu = ui.createMenu("🌌 ESN Menu")
   
-  menu.addItem("📆 New Meeting Agenda", "#")
+  menu.addItem("📆 New Meeting Agenda", "newMeeting")
   
-  //menu.addSeparator()
-
-  //var submenu = ui.createMenu("🔨 Set Up")
-  //submenu.addItem("📝 Create New Form","createNewRecruitmentForm")
-  //menu.addSubMenu(submenu)
   
   menu.addToUi()
 }
